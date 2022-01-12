@@ -1,0 +1,9 @@
+{
+    "name": "balanced-waterfill",
+    "version": "0.1.0",
+    "title": "Balanced Waterfill",
+    "author": "ToastBucket",
+    "factorio_version": "1.1.50",
+    "dependencies": ["base >= 1.1"],
+    "description": "Adds a more balanced waterfill item"
+}
