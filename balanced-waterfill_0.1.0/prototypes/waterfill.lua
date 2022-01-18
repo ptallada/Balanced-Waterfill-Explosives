@@ -1,4 +1,6 @@
 --waterfill.lua
+
+--Set up the water tile
 local shallowater = {
   name = "shallow-waterfill",
   collision_mask = {"water-tile", "item-layer", "object-layer", "resource-layer", "doodad-layer"},
@@ -20,8 +22,6 @@ local shallowater = {
     g = 0.129,
     r = 0.031000000000000001
   },
-
-
   map_color = {
     b = 95,
     g = 83,
@@ -134,7 +134,6 @@ local shallowater = {
       }
     }
   },
-
 
   trigger_effect = {
     {
@@ -350,7 +349,6 @@ local shallowater = {
     }
   },
   variants = {
-    
     inner_corner = {
       count = 6,
       hr_version = {
@@ -433,16 +431,17 @@ local shallowater = {
     }
   },
   walking_speed_modifier = 0.45,
-  walking_sound = data.raw.tile["water-mud"].walking_sound,
   vehicle_friction_modifier = 20,
 
+  walking_sound = data.raw.tile["water-mud"].walking_sound,
 }
 
+--Set up item that places waterfill
 local waterfill = {
     type = "item",
     name = "balanced-waterfill",
     tooltip = "placeholder",
-    icon = "__RitnWaterfill__/graphics/waterfill.png",
+    icon = "__balanced-waterfill__/graphics/waterfill.png",
     icon_size = 128, icon_mipmaps = 5,
     subgroup = "terrain",
     order = "c[landfill]-a[dirt]",
@@ -455,10 +454,62 @@ local waterfill = {
     }
 }
 
-local recipe = {
+--Set up recipe based off of settings
+local recipe = {}
+if settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Water only" then
+  recipe = {
     type = "recipe",
     name = "balanced-waterfill-recipe",
-    icon = "__RitnWaterfill__/graphics/waterfill.png",
+    icon = "__balanced-waterfill__/graphics/waterfill.png",
+    icon_size = 128, icon_mipmaps = 5,
+    energy_required = 1,
+    enabled = false,
+    subgroup = "terrain",
+    category = "crafting-with-fluid",
+    ingredients = {{type="fluid", name="water", amount=250}},
+    results = {
+      {type="item", name="balanced-waterfill", amount=1},
+    },
+    order = "c[landfill]-a[dirt]",
+  }
+elseif settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Normal" then
+  recipe = {
+    type = "recipe",
+    name = "balanced-waterfill-recipe",
+    icon = "__balanced-waterfill__/graphics/waterfill.png",
+    icon_size = 128, icon_mipmaps = 5,
+    energy_required = 1,
+    enabled = false,
+    subgroup = "terrain",
+    category = "advanced-crafting",
+    ingredients = {{"water-barrel",5}},
+    results = {
+      {type="item", name="balanced-waterfill", amount=1},
+      {type="item", name="empty-barrel", amount=5}
+    },
+    order = "c[landfill]-a[dirt]",
+  }
+elseif settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Expensive" then
+  recipe = {
+    type = "recipe",
+    name = "balanced-waterfill-recipe",
+    icon = "__balanced-waterfill__/graphics/waterfill.png",
+    icon_size = 128, icon_mipmaps = 5,
+    energy_required = 1,
+    enabled = false,
+    subgroup = "terrain",
+    category = "advanced-crafting",
+    ingredients = {{"water-barrel",5}},
+    results = {
+      {type="item", name="balanced-waterfill", amount=1},
+    },
+    order = "c[landfill]-a[dirt]",
+  }
+else
+  recipe = {
+    type = "recipe",
+    name = "balanced-waterfill-recipe",
+    icon = "__balanced-waterfill__/graphics/waterfill.png",
     icon_size = 128, icon_mipmaps = 5,
     energy_required = 1,
     enabled = false,
@@ -471,6 +522,8 @@ local recipe = {
     },
     order = "c[landfill]-a[dirt]",
     result_count = 1
-}
+  }
+end
 
+--Add everything to data.raw
 data:extend{waterfill, recipe, shallowater}
