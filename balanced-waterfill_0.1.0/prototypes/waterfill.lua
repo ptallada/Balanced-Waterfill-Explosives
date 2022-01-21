@@ -1,4 +1,5 @@
 --waterfill.lua
+local collision_mask_util = require("collision-mask-util")
 
 --Set up the water tile
 local shallowater = {
@@ -523,6 +524,13 @@ else
     order = "c[landfill]-a[dirt]",
     result_count = 1
   }
+end
+
+if settings.startup["balanced-waterfill-collision-setting"].value == "Funny mode(Allows you to kill your freinds with waterfill)" then
+  local additional_player_layer = collision_mask_util.get_first_unused_layer()
+  
+  shallowater.collision_mask = {"water-tile", "item-layer", "object-layer", "resource-layer", "doodad-layer", additional_player_layer}
+  data.raw["character"]["character"].collision_mask = {"player-layer", "train-layer", "consider-tile-transitions", additional_player_layer}
 end
 
 --Add everything to data.raw
