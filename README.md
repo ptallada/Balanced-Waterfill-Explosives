@@ -11,3 +11,8 @@ Other waterfill mods traditionally have the issue that placing water is unrestri
  - A setting to make waterfill kill players and biters when placed under them, this does turn waterfill back into the perfect wall, but still makes it impossible to accidentally delete parts of your factory, as well as protecting spidertrons.(This is mainly a feature because it is funny to kill your freinds with waterfill, but destroying spidertrons is never fun)
  - Works with offshore pumps
  - Has a technology unlock
+
+# Notes
+
+ - The "Funny mode" feature only works in versions 1.1.51 and beyond, as it requires a special flag that was added in that version
+ - Thanks to curiosity#3406 and calcwizard#7488 for answering my silly questions about lua
