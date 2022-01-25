@@ -8,7 +8,7 @@ Other waterfill mods traditionally have the issue that placing water is unrestri
 # Features
 
  - The ability to change how much the recipe of waterfill costs to make, from just consuming water, to requiring water to be barreled before making waterfill(this returns the same ammount of empty barrels), to actually consuming barrels, requiring a constant supply of barrels to make waterfill.
- - A setting to make waterfill kill players and biters when placed under them, this does turn waterfill back into the perfect wall, but still makes it impossible to accidentally delete parts of your factory, as well as protecting spidertrons.(This is mainly a feature because it is funny to kill your freinds with waterfill, but destroying spidertrons is never fun)
+ - A setting to make waterfill kill players when placed under them. This setting is called funny mode. This makes waterfill impassible to players, but still walkable by biters and still protecting  you from accidentally deleting parts of your factory, sipdertrons, cars and cliffs are also safe. This still prevents waterfill from being overpowered, but lets you kill your freinds with waterfill, which is fun.
  - Works with offshore pumps
  - Has a technology unlock
 
