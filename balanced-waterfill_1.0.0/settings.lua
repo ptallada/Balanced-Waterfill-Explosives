@@ -8,7 +8,6 @@ data:extend({
         allowed_values = {"Water only", "Normal", "Expensive"}
     },
     {
-        -- TODO: MAKE THIS DO SOMETHING
         type = "string-setting",
         name = "balanced-waterfill-collision-setting",
         setting_type = "startup",
