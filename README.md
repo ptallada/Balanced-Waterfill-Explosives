@@ -16,3 +16,4 @@ Other waterfill mods traditionally have the issue that placing water is unrestri
 
  - The "Funny mode" feature only works in versions 1.1.51 and beyond, as it requires a special flag that was added in that version
  - Thanks to curiosity#3406 and calcwizard#7488 for answering my silly questions about lua
+ - Thanks to WUBE software, the art assets are all made from base art
