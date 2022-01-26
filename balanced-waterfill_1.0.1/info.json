@@ -1,9 +1,9 @@
 {
     "name": "balanced-waterfill",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "title": "Balanced Waterfill",
     "author": "ToastBucket",
-    "factorio_version": "1.1.51",
+    "factorio_version": "1.1",
     "dependencies": ["base >= 1.1.51"],
     "description": "Adds a more balanced counterpart to other, popular waterfill mods."
 }
