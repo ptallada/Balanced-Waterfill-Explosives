@@ -7,7 +7,7 @@ if settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Water on
             type = "technology",
             name = "balanced-waterfill-tech",
             icon = "__balanced-waterfill__/graphics/waterfill.png",
-            icon_size = 128, icon_mipmaps = 5,
+            icon_size = 128, icon_mipmaps = 4,
             prerequisites = {"automation-2"},
     
             unit = {
@@ -30,7 +30,7 @@ else
             type = "technology",
             name = "balanced-waterfill-tech",
             icon = "__balanced-waterfill__/graphics/waterfill.png",
-            icon_size = 128, icon_mipmaps = 5,
+            icon_size = 128, icon_mipmaps = 4,
             prerequisites = {"fluid-handling"},
     
             unit = {
