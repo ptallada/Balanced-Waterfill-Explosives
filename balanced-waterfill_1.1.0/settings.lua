@@ -12,6 +12,6 @@ data:extend({
         name = "balanced-waterfill-collision-setting",
         setting_type = "startup",
         default_value = "Walkable",
-        allowed_values = {"Walkable", "Funny mode(Allows you to kill your freinds with waterfill)"}
+        allowed_values = {"Walkable", "Kills Players", "Impassible"}
     }
 })
