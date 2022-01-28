@@ -7,7 +7,7 @@ Date: 2022.01.27
 Version: 1.1.0
 Date: 2022.01.27
   Changes:
-    - Changed the Collision Type setting to include "Kills players" and "Impassible" letting you choose between only wterfilling players, and being able to waterfill biters too. (Impassible mode is pretty unbalanced)
+    - Changed the Collision Type setting to include "Kills players" and "Impassible" letting you choose between only waterfilling players, and being able to waterfill biters too. (Impassible mode is pretty unbalanced)
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.1
 Date: 2022.01.26
