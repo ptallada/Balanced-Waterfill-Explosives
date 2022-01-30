@@ -24,5 +24,4 @@ data.raw.unit["medium-spitter"].protected_from_tile_building = false
 data.raw.unit["small-biter"].protected_from_tile_building = false
 data.raw.unit["small-spitter"].protected_from_tile_building = false
 
-
 --Thanks to @curiosity#3406 and calcwizard#7488 for the advice given while making this mod, and for answers to my sily questions.

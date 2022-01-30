@@ -1,4 +1,6 @@
 --waterfill.lua
+
+--Import collision_mask_util
 local collision_mask_util = require("collision-mask-util")
 
 --Set up the water tile
@@ -455,76 +457,45 @@ local waterfill = {
     }
 }
 
+--Default Recipe
+local recipe = {
+  type = "recipe",
+  name = "balanced-waterfill-recipe",
+  icon = "__balanced-waterfill__/graphics/waterfill.png",
+  icon_size = 128, icon_mipmaps = 4,
+  energy_required = 1,
+  enabled = false,
+  subgroup = "terrain",
+  category = "advanced-crafting",
+  ingredients = {{"water-barrel",5}},
+  results = {
+    {type="item", name="balanced-waterfill", amount=1},
+    {type="item", name="empty-barrel", amount=5}
+  },
+  order = "c[landfill]-a[dirt]",
+  result_count = 1
+}
+
 --Set up recipe based off of settings
-local recipe = {}
 if settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Water only" then
-  recipe = {
-    type = "recipe",
-    name = "balanced-waterfill-recipe",
-    icon = "__balanced-waterfill__/graphics/waterfill.png",
-    icon_size = 128, icon_mipmaps = 4,
-    energy_required = 1,
-    enabled = false,
-    subgroup = "terrain",
-    category = "crafting-with-fluid",
-    ingredients = {{type="fluid", name="water", amount=250}},
-    results = {
-      {type="item", name="balanced-waterfill", amount=1},
-    },
-    order = "c[landfill]-a[dirt]",
-  }
+  recipe.category = "crafting-with-fluid"
+  recipe.ingredients = {{type="fluid", name="water", amount=250}}
+  recipe.results = {
+    {type="item", name="balanced-waterfill", amount=1}
+}
 elseif settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Normal" then
-  recipe = {
-    type = "recipe",
-    name = "balanced-waterfill-recipe",
-    icon = "__balanced-waterfill__/graphics/waterfill.png",
-    icon_size = 128, icon_mipmaps = 4,
-    energy_required = 1,
-    enabled = false,
-    subgroup = "terrain",
-    category = "advanced-crafting",
-    ingredients = {{"water-barrel",5}},
-    results = {
-      {type="item", name="balanced-waterfill", amount=1},
-      {type="item", name="empty-barrel", amount=5}
-    },
-    order = "c[landfill]-a[dirt]",
-  }
+  recipe.category = "advanced-crafting"
+  recipe.ingredients = {{"water-barrel",5}}
+  recipe.results = {
+    {type="item", name="balanced-waterfill", amount=1},
+    {type="item", name="empty-barrel", amount=5}
+}
 elseif settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Expensive" then
-  recipe = {
-    type = "recipe",
-    name = "balanced-waterfill-recipe",
-    icon = "__balanced-waterfill__/graphics/waterfill.png",
-    icon_size = 128, icon_mipmaps = 4,
-    energy_required = 1,
-    enabled = false,
-    subgroup = "terrain",
-    category = "advanced-crafting",
-    ingredients = {{"water-barrel",5}},
-    results = {
-      {type="item", name="balanced-waterfill", amount=1},
-    },
-    order = "c[landfill]-a[dirt]",
-  }
-else
-  recipe = {
-    type = "recipe",
-    name = "balanced-waterfill-recipe",
-    icon = "__balanced-waterfill__/graphics/waterfill.png",
-    icon_size = 128, icon_mipmaps = 4,
-    energy_required = 1,
-    enabled = false,
-    subgroup = "terrain",
-    category = "advanced-crafting",
-    ingredients = {{"water-barrel",5}},
-    results = {
-      {type="item", name="balanced-waterfill", amount=1},
-      {type="item", name="empty-barrel", amount=5}
-    },
-    order = "c[landfill]-a[dirt]",
-    result_count = 1
-  }
-end
+  recipe.category = "advanced-crafting"
+  recipe.ingredients = {{"water-barrel",5}}
+  recipe.results = {
+    {type="item", name="balanced-waterfill", amount=1},
+} end
 
 --Make player and waterfill collide, while not colliding with spidertrons & whatnot
 if settings.startup["balanced-waterfill-collision-setting"].value == "Kills Players" then
@@ -536,5 +507,6 @@ end
 if settings.startup["balanced-waterfill-collision-setting"].value == "Impassible" then
   shallowater.collision_mask = {"water-tile", "item-layer", "object-layer", "resource-layer", "doodad-layer", "player-layer"}
 end
+
 --Add everything to data.raw
 data:extend{waterfill, recipe, shallowater}

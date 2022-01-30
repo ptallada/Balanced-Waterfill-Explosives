@@ -13,5 +13,5 @@ data:extend({
         setting_type = "startup",
         default_value = "Walkable",
         allowed_values = {"Walkable", "Kills Players", "Impassible"}
-    }
+    },
 })
