@@ -10,7 +10,7 @@ local shallowater = {
   check_collision_with_entities = true,
   draw_in_water_layer = true,
   type = "tile",
-  layer = 6,
+  layer = 3,
   can_be_part_of_blueprint = true,
   effect = "water",
   effect_color = {
@@ -29,6 +29,11 @@ local shallowater = {
     b = 95,
     g = 83,
     r = 51
+  },
+  scorch_mark_color = {
+    b = 92,
+    g = 98,
+    r = 82
   },
   pollution_absorption_per_second = 5e-06,
   

@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.0
+Date: 2022.02.02
+  Features:
+    - Added alien biomes compatability, this means better integration with Space Exploration
+    - Added a setting to enable or disable limiting placement of waterfill on dry planets (Space Exploration integration)
+  Changes:
+    - Fixed a typo in the changelog
+    - Code cleanup / general improvements 
+  Notes:
+    - Space Exporation/Alien Biomes integration is still questionable at best, please report bugs, issues, or suggestions on the github page or the discussions tab of the mod page
+---------------------------------------------------------------------------------------------------
 Version: 1.1.1
 Date: 2022.01.27
   Changes:
