@@ -1,5 +1,12 @@
---Reset layer for alien biomes compatability
-data.raw.tile["shallow-waterfill"].layer = 3
+--SE compatability
+local waterfill_name = "shallow-waterfill"
+if settings.startup["balanced-waterfill-restrict-placement-se-setting"].value == false then
+    waterfill_name = "shallow-fill"
+end
+
+data.raw.character["character"].synced_footstep_particle_triggers[1].tiles = {waterfill_name}
+data.raw.tile[waterfill_name].layer = 3
+data.raw.item["balanced-waterfill"].place_as_tile.result = waterfill_name
 
 --Ensure other tiles have transitions to shallow waterfill
 local water_types = {
@@ -25,7 +32,7 @@ for a, tile in pairs(data.raw.tile) do
                 end
 
                 if contains_water then
-                    table.insert(data.raw.tile[a].transitions[b].to_tiles, "shallow-waterfill")
+                    table.insert(data.raw.tile[a].transitions[b].to_tiles, waterfill_name)
                 end
                 contains_water = false
             end

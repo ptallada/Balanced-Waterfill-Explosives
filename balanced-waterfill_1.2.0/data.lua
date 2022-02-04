@@ -2,10 +2,7 @@
 require("prototypes.waterfill")
 require("prototypes.technology")
 
---Make player create splashing effects while walking over shallow waterfill
-data.raw.character["character"].synced_footstep_particle_triggers[1].tiles = {"shallow-waterfill"}
-
---Make entities not stop placement of waterfill, even when it collides
+--Make certain entities not stop placement of waterfill, even when it collides
 data.raw.character["character"].protected_from_tile_building = false
 data.raw.unit["behemoth-biter"].protected_from_tile_building = false
 data.raw.unit["behemoth-spitter"].protected_from_tile_building = false

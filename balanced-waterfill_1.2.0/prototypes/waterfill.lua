@@ -444,6 +444,14 @@ local shallowater = {
   walking_sound = data.raw.tile["water-mud"].walking_sound,
 }
 
+--SE compatability
+if settings.startup["balanced-waterfill-restrict-placement-se-setting"].value == false then
+  shallowater.name = "shallow-fill"
+end
+
+
+
+
 --Set up item that places waterfill
 local waterfill = {
     type = "item",
@@ -456,7 +464,7 @@ local waterfill = {
     stack_size = 200,
     place_as_tile =
     {
-      result = "shallow-waterfill",
+      result = "shallow-fill",
       condition_size = 1,
       condition = { "item-layer", "object-layer", "water-tile", "resource-layer","player-layer", "transport-belt-layer", "train-layer"}
     }
