@@ -444,14 +444,6 @@ local shallowater = {
   walking_sound = data.raw.tile["water-mud"].walking_sound,
 }
 
---SE compatability
-if settings.startup["balanced-waterfill-restrict-placement-se-setting"].value == false then
-  shallowater.name = "shallow-fill"
-end
-
-
-
-
 --Set up item that places waterfill
 local waterfill = {
     type = "item",
@@ -519,6 +511,13 @@ end
 
 if settings.startup["balanced-waterfill-collision-setting"].value == "Impassible" then
   shallowater.collision_mask = {"water-tile", "item-layer", "object-layer", "resource-layer", "doodad-layer", "player-layer"}
+end
+
+--SE compatability (disgusting hack)
+if mods["space-exploration"] then
+  if settings.startup["balanced-waterfill-restrict-placement-se-setting"].value == false then
+    shallowater.name = "shallow-fill"
+  end
 end
 
 --Add everything to data.raw
