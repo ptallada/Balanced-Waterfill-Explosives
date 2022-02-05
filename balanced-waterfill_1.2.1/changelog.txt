@@ -1,6 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.1
+Date: 2022.02.05
+  Changes:
+    - Fixed yet another changelog typo
+    - More code cleanup
+  Bugfixes:
+    - Fixed critical bug that could delete water tiles if a setting was changed for an existing save.
+---------------------------------------------------------------------------------------------------
 Version: 1.2.0
-Date: 2022.02.03
+Date: 2022.02.04
   Features:
     - Added alien biomes compatability, this means better integration with Space Exploration
     - Added a setting to enable or disable limiting placement of waterfill on dry planets (Space Exploration integration)

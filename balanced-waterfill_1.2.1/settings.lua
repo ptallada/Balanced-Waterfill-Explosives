@@ -27,5 +27,4 @@ local DryWaterfillSetting = {
 if mods["space-exploration"] then
     DryWaterfillSetting.hidden = false
 end
-
 data:extend({DryWaterfillSetting})

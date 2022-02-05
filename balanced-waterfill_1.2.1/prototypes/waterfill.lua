@@ -1,9 +1,7 @@
 --waterfill.lua
-
---Import collision_mask_util
 local collision_mask_util = require("collision-mask-util")
 
---Set up the water tile
+--Default water tile
 local shallowater = {
   name = "shallow-waterfill",
   collision_mask = {"water-tile", "item-layer", "object-layer", "resource-layer", "doodad-layer"},
@@ -444,7 +442,7 @@ local shallowater = {
   walking_sound = data.raw.tile["water-mud"].walking_sound,
 }
 
---Set up item that places waterfill
+--Default waterfill placing item
 local waterfill = {
     type = "item",
     name = "balanced-waterfill",
@@ -456,7 +454,7 @@ local waterfill = {
     stack_size = 200,
     place_as_tile =
     {
-      result = "shallow-fill",
+      result = "shallow-waterfill",
       condition_size = 1,
       condition = { "item-layer", "object-layer", "water-tile", "resource-layer","player-layer", "transport-belt-layer", "train-layer"}
     }
@@ -508,7 +506,6 @@ if settings.startup["balanced-waterfill-collision-setting"].value == "Kills Play
   shallowater.collision_mask = {"water-tile", "item-layer", "object-layer", "resource-layer", "doodad-layer", additional_player_layer}
   data.raw["character"]["character"].collision_mask = {"player-layer", "train-layer", "consider-tile-transitions", additional_player_layer}
 end
-
 if settings.startup["balanced-waterfill-collision-setting"].value == "Impassible" then
   shallowater.collision_mask = {"water-tile", "item-layer", "object-layer", "resource-layer", "doodad-layer", "player-layer"}
 end
@@ -522,3 +519,16 @@ end
 
 --Add everything to data.raw
 data:extend{waterfill, recipe, shallowater}
+
+--SE compatability (disgusting hack part 2)
+if mods["space-exploration"] then
+  local shallowater_compatability_replacement
+  if settings.startup["balanced-waterfill-restrict-placement-se-setting"].value == false then
+    shallowater_compatability_replacement = table.deepcopy(data.raw.tile["shallow-fill"])
+    shallowater_compatability_replacement.name = "shallow-waterfill"
+  else
+    shallowater_compatability_replacement = table.deepcopy(data.raw.tile["shallow-waterfill"])
+    shallowater_compatability_replacement.name = "shallow-fill"
+  end
+  data:extend{shallowater_compatability_replacement}
+end
