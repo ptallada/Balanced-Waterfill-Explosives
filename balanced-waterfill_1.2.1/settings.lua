@@ -13,6 +13,13 @@ data:extend({
         setting_type = "startup",
         default_value = "Walkable",
         allowed_values = {"Walkable", "Kills Players", "Impassible"}
+    },
+    {
+        type = "bool-setting",
+        name = "balanced-waterfill-landfill-fix-se-setting",
+        setting_type = "startup",
+        default_value = true,
+        hidden = true
     }
 })
 

@@ -1,15 +1,49 @@
+--data-final-fixes.lua
+--Collect list of character names (compatability with character mods)
+local characternames = {"character"}
+for k, char in pairs(data.raw.character) do
+    table.insert(characternames, char.name)
+end
+
+--Compatability with character mods
+local function addFootstepParticles(namelist, tile)
+    for k, char in pairs(namelist) do
+        if data.raw.character[char].synced_footstep_particle_triggers then
+            table.insert(data.raw.character[char].synced_footstep_particle_triggers[1].tiles, tile)
+        end
+    end
+end
+
+local function getIndex(table, name)
+    local index
+    for i, value in pairs(table) do
+        if table[i] == name then
+            index = i
+        end
+    end
+    return index
+end
+
+
 --Water footstep particles for waterfill
-table.insert(data.raw.character["character"].synced_footstep_particle_triggers[1].tiles, "shallow-waterfill")
+--table.insert(data.raw.character[charactername].synced_footstep_particle_triggers[1].tiles, "shallow-waterfill")
+addFootstepParticles(characternames, "shallow-waterfill")
 --SE compatability
 if mods["space-exploration"] then
     if settings.startup["balanced-waterfill-restrict-placement-se-setting"].value == false then
         data.raw.item["balanced-waterfill"].place_as_tile.result = "shallow-fill"
     end
     --Footstep particles for the additional tile that only exists if SE is enabled
-    table.insert(data.raw.character["character"].synced_footstep_particle_triggers[1].tiles, "shallow-fill")
+    --table.insert(data.raw.character[charactername].synced_footstep_particle_triggers[1].tiles, "shallow-fill")
+    addFootstepParticles(characternames, "shallow-fill")
     --Reset tile transition layers for alien biomes compatability
     data.raw.tile["shallow-waterfill"].layer = 3
     data.raw.tile["shallow-fill"].layer = 3
+
+    -- TODO: FIND WHAT MOD THIS IS FOR
+    if settings.startup["balanced-waterfill-landfill-fix-se-setting"] then
+        table.remove(data.raw.tile["landfill"].collision_mask, getIndex(data.raw.tile["landfill"].collision_mask, "resource-layer"))
+    end
 end
 
 --Ensure other tiles have transitions to shallow waterfill
