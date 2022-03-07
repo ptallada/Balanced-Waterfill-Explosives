@@ -14,16 +14,6 @@ local function addFootstepParticles(namelist, tile)
     end
 end
 
-local function getIndex(table, name)
-    local index
-    for i, value in pairs(table) do
-        if table[i] == name then
-            index = i
-        end
-    end
-    return index
-end
-
 
 --Water footstep particles for waterfill
 --table.insert(data.raw.character[charactername].synced_footstep_particle_triggers[1].tiles, "shallow-waterfill")
@@ -39,11 +29,6 @@ if mods["space-exploration"] then
     --Reset tile transition layers for alien biomes compatability
     data.raw.tile["shallow-waterfill"].layer = 3
     data.raw.tile["shallow-fill"].layer = 3
-
-    -- TODO: FIND WHAT MOD THIS IS FOR
-    if settings.startup["balanced-waterfill-landfill-fix-se-setting"] then
-        table.remove(data.raw.tile["landfill"].collision_mask, getIndex(data.raw.tile["landfill"].collision_mask, "resource-layer"))
-    end
 end
 
 --Ensure other tiles have transitions to shallow waterfill

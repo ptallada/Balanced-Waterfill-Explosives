@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.2
+Date: 2022.03.07
+  Changes:
+    - Added localization for German and French
+  Bugfixes:
+    - Fixed crash with character changing mods
+---------------------------------------------------------------------------------------------------
 Version: 1.2.1
 Date: 2022.02.05
   Changes:
