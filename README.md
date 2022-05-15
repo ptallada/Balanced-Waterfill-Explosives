@@ -6,7 +6,7 @@ Other waterfill mods traditionally have the issue that placing water is unrestri
 
 # Features
 
- - **NEW!** Integration with Space Exploration / Krastorio 2 (Integration still needs work, please report bugs on the issues tab of the github or the discussions tab of the mod page)
+ - Integration with Space Exploration / Krastorio 2 (Report bugs in the "Issues" tab)
  - Configurable recipe cost for making waterfill, from just consuming water, to requiring water to be barreled before making waterfill (this returns the same ammount of empty barrels), to actually consuming those barrels, requiring a constant supply of barrels to produce waterfill.
  - A setting for Collision Type, the ability to make waterfill lethal, and impassible to players, while still protecting spidertrons, your factory, cliffs, and other entities from getting destroyed by waterfill. The "Kills players" setting will only make it impassible to players, while the "Impassible" setting will take it a step further, and make it totally impassible, to biters, players and cars alike, (will still protect spidertrons and the factory from getting destroyed, the setting will only make it impossible to walk on for other entities)
  - A setting to enable or disable waterfilling on "waterless" planets. (Space Exploration only)
