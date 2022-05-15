@@ -13,6 +13,13 @@ data:extend({
         setting_type = "startup",
         default_value = "Walkable",
         allowed_values = {"Walkable", "Kills Players", "Impassible"}
+    },
+    {
+        type = "string-setting",
+        name = "balanced-waterfill-texture-setting",
+        setting_type = "startup",
+        default_value = "Default",
+        allowed_values = {"Legacy", "Default"}
     }
 })
 

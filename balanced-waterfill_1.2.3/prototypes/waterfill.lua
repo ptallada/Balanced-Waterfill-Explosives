@@ -369,11 +369,11 @@ local shallowater = {
         count = 8,
         hr_version = {
           count = 8,
-          picture = "__base__/graphics/terrain/water-shallow/hr-water-shallow1.png",
+          picture = "__base__/graphics/terrain/water-shallow/hr-water-shallow2.png",
           scale = 0.5,
           size = 1
         },
-        picture = "__base__/graphics/terrain/water-shallow/water-shallow1.png",
+        picture = "__base__/graphics/terrain/water-shallow/water-shallow2.png",
         size = 1
       },
       {
@@ -436,12 +436,125 @@ local shallowater = {
       picture = "__base__/graphics/terrain/water-shallow/water-shallow-u.png"
     }
   },
-  walking_speed_modifier = 0.45,
+  walking_speed_modifier = 0.5,
   vehicle_friction_modifier = 20,
 
-  walking_sound = data.raw.tile["water-mud"].walking_sound,
+  walking_sound = {
+    {
+      filename = "__base__/sound/walking/shallow-water-01.ogg",
+      volume = 1
+    },
+    {
+      filename = "__base__/sound/walking/shallow-water-02.ogg",
+      volume = 1
+    },
+    {
+      filename = "__base__/sound/walking/shallow-water-03.ogg",
+      volume = 1
+    },
+    {
+      filename = "__base__/sound/walking/shallow-water-04.ogg",
+      volume = 1
+    },
+    {
+      filename = "__base__/sound/walking/shallow-water-05.ogg",
+      volume = 1
+    },
+    {
+      filename = "__base__/sound/walking/shallow-water-06.ogg",
+      volume = 1
+    },
+    {
+      filename = "__base__/sound/walking/shallow-water-07.ogg",
+      volume = 1
+    }
+  },
 }
 
+if settings.startup["balanced-waterfill-texture-setting"].value == "Default" then
+  shallowater.variants = {
+    inner_corner = {
+      count = 6,
+      hr_version = {
+        count = 6,
+        picture = "__base__/graphics/terrain/water-mud/hr-water-mud-inner-corner.png",
+        scale = 0.5
+      },
+      picture = "__base__/graphics/terrain/water-mud/water-mud-inner-corner.png"
+    },
+    main = {
+      {
+        count = 8,
+        hr_version = {
+          count = 8,
+          picture = "__base__/graphics/terrain/water-mud/hr-water-mud1.png",
+          scale = 0.5,
+          size = 1
+        },
+        picture = "__base__/graphics/terrain/water-mud/water-mud1.png",
+        size = 1
+      },
+      {
+        count = 8,
+        hr_version = {
+          count = 8,
+          picture = "__base__/graphics/terrain/water-mud/hr-water-mud2.png",
+          scale = 0.5,
+          size = 2
+        },
+        picture = "__base__/graphics/terrain/water-mud/water-mud2.png",
+        size = 2
+      },
+      {
+        count = 8,
+        hr_version = {
+          count = 8,
+          picture = "__base__/graphics/terrain/water-mud/hr-water-mud4.png",
+          scale = 0.5,
+          size = 4
+        },
+        picture = "__base__/graphics/terrain/water-mud/water-mud4.png",
+        size = 4
+      }
+    },
+    o_transition = {
+      count = 1,
+      hr_version = {
+        count = 1,
+        picture = "__base__/graphics/terrain/water-mud/hr-water-mud-o.png",
+        scale = 0.5
+      },
+      picture = "__base__/graphics/terrain/water-mud/water-mud-o.png"
+    },
+    outer_corner = {
+      count = 6,
+      hr_version = {
+        count = 6,
+        picture = "__base__/graphics/terrain/water-mud/hr-water-mud-outer-corner.png",
+        scale = 0.5
+      },
+      picture = "__base__/graphics/terrain/water-mud/water-mud-outer-corner.png"
+    },
+    side = {
+      count = 6,
+      hr_version = {
+        count = 6,
+        picture = "__base__/graphics/terrain/water-mud/hr-water-mud-side.png",
+        scale = 0.5
+      },
+      picture = "__base__/graphics/terrain/water-mud/water-mud-side.png"
+    },
+    u_transition = {
+      count = 1,
+      hr_version = {
+        count = 1,
+        picture = "__base__/graphics/terrain/water-mud/hr-water-mud-u.png",
+        scale = 0.5
+      },
+      picture = "__base__/graphics/terrain/water-mud/water-mud-u.png"
+    }
+  }
+end
 --Default waterfill placing item
 local waterfill = {
     type = "item",
