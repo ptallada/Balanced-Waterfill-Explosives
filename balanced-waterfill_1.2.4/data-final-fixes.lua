@@ -27,8 +27,13 @@ if mods["space-exploration"] then
     --table.insert(data.raw.character[charactername].synced_footstep_particle_triggers[1].tiles, "shallow-fill")
     addFootstepParticles(characternames, "shallow-fill")
     --Reset tile transition layers for alien biomes compatability
-    data.raw.tile["shallow-waterfill"].layer = 3
+    
     data.raw.tile["shallow-fill"].layer = 3
+    
+end
+
+if mods["alien-biomes"] then
+    data.raw.tile["shallow-waterfill"].layer = 3
 end
 
 --Ensure other tiles have transitions to shallow waterfill
