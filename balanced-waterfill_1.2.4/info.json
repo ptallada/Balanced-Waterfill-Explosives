@@ -1,7 +1,7 @@
 {
     "name": "balanced-waterfill",
     "version": "1.2.4",
-    "title": "Balanced Waterfill (Pre-release)",
+    "title": "Balanced Waterfill",
     "author": "ToastBucket",
     "factorio_version": "1.1",
     "dependencies": ["base >= 1.1.51", "? alien-biomes >= 0.6"],

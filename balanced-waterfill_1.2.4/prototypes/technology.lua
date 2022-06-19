@@ -22,7 +22,7 @@ local technology = {
     }
 }
 --Set up technology based on settings
-if settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Water only" then
+if settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Water Only" then
     technology.prerequisites = {"automation-2"}
 end
 data:extend{technology}

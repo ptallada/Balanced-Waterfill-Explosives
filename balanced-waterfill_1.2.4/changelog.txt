@@ -3,6 +3,10 @@ Version: 1.2.4
 Date: 2022.05.21
   Changes:
     - Fixed bug that broke tile transitions with only Alien Biomes loaded
+    - Changed names of certain settings
+    - Changed default recipe for waterfill
+    - Fixed missing translations for a setting in German and French
+    - Changed water layer to 7, this fixes transitions with water tiles
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.3
 Date: 2022.05.15

@@ -8,8 +8,9 @@ local shallowater = {
   check_collision_with_entities = true,
   draw_in_water_layer = true,
   type = "tile",
-  layer = 3,
+  layer = 7,
   can_be_part_of_blueprint = true,
+  transition_merges_with_tile = "water",
   effect = "water",
   effect_color = {
     10,
@@ -593,20 +594,20 @@ local recipe = {
 }
 
 --Set up recipe based off of settings
-if settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Water only" then
+if settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Water Only" then
   recipe.category = "crafting-with-fluid"
   recipe.ingredients = {{type="fluid", name="water", amount=250}}
   recipe.results = {
     {type="item", name="balanced-waterfill", amount=1}
 }
-elseif settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Normal" then
+elseif settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Uses Barrels" then
   recipe.category = "advanced-crafting"
   recipe.ingredients = {{"water-barrel",5}}
   recipe.results = {
     {type="item", name="balanced-waterfill", amount=1},
     {type="item", name="empty-barrel", amount=5}
 }
-elseif settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Expensive" then
+elseif settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Consumes Barrels" then
   recipe.category = "advanced-crafting"
   recipe.ingredients = {{"water-barrel",5}}
   recipe.results = {

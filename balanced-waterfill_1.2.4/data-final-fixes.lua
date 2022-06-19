@@ -1,11 +1,12 @@
 --data-final-fixes.lua
---Collect list of character names (compatability with character mods)
+
+--Collect list of character names 
 local characternames = {"character"}
 for k, char in pairs(data.raw.character) do
     table.insert(characternames, char.name)
 end
 
---Compatability with character mods
+--Apply particles to a character
 local function addFootstepParticles(namelist, tile)
     for k, char in pairs(namelist) do
         if data.raw.character[char].synced_footstep_particle_triggers then
@@ -13,6 +14,7 @@ local function addFootstepParticles(namelist, tile)
         end
     end
 end
+
 
 
 --Water footstep particles for waterfill
@@ -26,15 +28,16 @@ if mods["space-exploration"] then
     --Footstep particles for the additional tile that only exists if SE is enabled
     --table.insert(data.raw.character[charactername].synced_footstep_particle_triggers[1].tiles, "shallow-fill")
     addFootstepParticles(characternames, "shallow-fill")
+
     --Reset tile transition layers for alien biomes compatability
-    
-    data.raw.tile["shallow-fill"].layer = 3
+    data.raw.tile["shallow-fill"].layer = 7
     
 end
 
 if mods["alien-biomes"] then
-    data.raw.tile["shallow-waterfill"].layer = 3
+    data.raw.tile["shallow-waterfill"].layer = 7
 end
+
 
 --Ensure other tiles have transitions to shallow waterfill
 local water_types = {

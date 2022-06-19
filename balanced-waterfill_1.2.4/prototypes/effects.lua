@@ -37,4 +37,4 @@ local biterslowdown = {
     target_movement_modifier = 0.4,
 }
 
---data:extend{biterslowdown, watersplash}
+data:extend{biterslowdown, watersplash}
