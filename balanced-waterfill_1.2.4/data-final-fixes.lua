@@ -75,3 +75,12 @@ for a, tile in pairs(data.raw.tile) do
         end
     end
 end
+
+
+if settings.startup["balanced-waterfill-biterspeed-setting"].value == true then
+    for a, biter in pairs(Biters) do
+        if data.raw.unit[biter] then
+            data.raw.unit[biter].affected_by_tiles = true
+        end
+    end
+end

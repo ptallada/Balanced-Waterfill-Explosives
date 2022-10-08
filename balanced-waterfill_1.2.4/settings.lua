@@ -20,6 +20,12 @@ data:extend({
         setting_type = "startup",
         default_value = "Default",
         allowed_values = {"Legacy", "Default"}
+    },
+    {
+        type = "bool-setting",
+        name = "balanced-waterfill-biterspeed-setting",
+        setting_type = "startup",
+        default_value = true,
     }
 })
 
