@@ -10,6 +10,7 @@ local shallowater = {
   type = "tile",
   layer = 7,
   can_be_part_of_blueprint = true,
+  has_special_effect_mask_transition = false,
   transition_merges_with_tile = "water",
   effect = "water",
   effect_color = {
