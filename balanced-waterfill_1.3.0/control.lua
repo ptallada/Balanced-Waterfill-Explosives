@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-function
 --control.lua
 --Messing around with custom footstep particles, unimplemented for the time being
 

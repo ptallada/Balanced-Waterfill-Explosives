@@ -1,6 +1,6 @@
 --effects.lua
 
---Might use for later, currently this whole file is unimplemented
+--Might use for later, currently this whole file is unused
 local watersplash = {
     type = "smoke-with-trigger",
     name = "water-splash-effect",

@@ -179,7 +179,7 @@ end
 
 -- Exceptions for collision masking
 local object_layer_exceptions_cargo_ship = {"curved-water-way", "curved-water-way-placed", "straight-water-way", "straight-water-way-placed", "invisible_rail", "bridge_crossing", "port", "bridge-west-clickable", "bridge-east-clickable", "bridge-north-clickable", "bridge-south-clickable", "bridge_base"}
-local object_layer_exceptions = {"floating-electric-pole", "ship_pump", "bbr-straight-rail-wood", "bbr-curved-rail-wood", "bbr-straight-rail-brick", "bbr-curved-rail-brick", "bbr-straight-rail-iron", "bbr-curved-rail-iron"}
+local object_layer_exceptions = {"floating-electric-pole", "ship_pump", "bbr-straight-rail-wood", "bbr-curved-rail-wood", "bbr-straight-rail-brick", "bbr-curved-rail-brick", "bbr-straight-rail-iron", "bbr-curved-rail-iron", "spidertron-leg-1", "spidertron-leg-2", "spidertron-leg-3", "spidertron-leg-4", "spidertron-leg-5", "spidertron-leg-6", "spidertron-leg-7", "spidertron-leg-8"}
 
 
 
@@ -214,7 +214,9 @@ if settings.startup["balanced-waterfill-collision-setting"].value == "Kills Play
     insert_collision_masks_by_prototype("character", nil, waterfill_collision_layer_player) -- Adds waterfill collision to all characters
 end
 if settings.startup["balanced-waterfill-collision-setting"].value == "Impassible" then
-    insert_collision_masks_by_layer("player-layer", waterfill_collision_layer_player) -- Adds waterfill collision to players, biters, vehicles, and anything else that contains with player-layer
+    print("BEGIN FISHING")
+    insert_collision_masks_by_layer("player-layer", nil, waterfill_collision_layer_player) -- Adds waterfill collision to players, biters, vehicles, and anything else that contains with player-layer
+    print("Bro")
 end
 
 set_waterfill_collision_mask({waterfill_collision_layer_resource, waterfill_collision_layer_player, waterfill_collision_layer_object, "item-layer", "doodad-layer", "water-tile"})

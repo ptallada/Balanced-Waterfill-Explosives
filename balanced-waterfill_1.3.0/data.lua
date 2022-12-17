@@ -29,11 +29,12 @@ end
 table.insert(data.raw["explosion"]["water-splash"].flags, "placeable-off-grid")
 data.raw["optimized-particle"]["deep-water-particle"].render_layer = "ground-tile"
 
+-- 1.3.0 checklist
 
---TODO Spidertrons don't work for some reason walking on waterfill??
---TODO Beautiful bridges boat collision?
 --TODO code cleanup
+--DONE write changelog 
 
+--DONE Spidertrons don't work for some reason walking on waterfill??
 --DONE cargo ships - bridges I THINK
 --DONE mod setting ordering 
 --DONE Beautiful bridges compatability 
@@ -42,10 +43,11 @@ data.raw["optimized-particle"]["deep-water-particle"].render_layer = "ground-til
 --DONE Full rewrite of collision mask logic
 --DONE Fix typo in settings
 
+--1.3.1 Plan?
+--TODO move collision mask stuff to new file? Perhaps?
+--TODO Beautiful bridges boat collision?
 --TODO something like landfill everywhere?
 --TODO remove weird one water tile thingy
-
+--TODO cut unessesary collision layers dynamically based on loaded mods 
 
 --Thanks to curiosity, ashley_sky and calcwizard for the advice given while making this mod, and for answers to my sily questions.
-
-
