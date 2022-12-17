@@ -1,6 +1,6 @@
 --effects.lua
 
---Might use for later, currently this whole file is unimplemented
+--Might use for later, currently this whole file is unused
 local watersplash = {
     type = "smoke-with-trigger",
     name = "water-splash-effect",
@@ -29,12 +29,6 @@ local watersplash = {
     movement_slow_down_factor = 0,
 }
 
-local biterslowdown = {
-    type = "sticker",
-    name = "biter-slowdown-sticker",
 
-    duration_in_ticks = 60,
-    target_movement_modifier = 0.4,
-}
 
---data:extend{biterslowdown, watersplash}
+data:extend{watersplash}

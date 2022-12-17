@@ -1,8 +1,29 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.3.0
+Date: 2022.12.17
+  Features:
+    - Allowed for biters to be slowed when walking on waterfill
+    - Full Cargo Ships compatabillity - Ships, bridges, and power poles placeable on waterfill
+    - Beautiful Bridge Rail compatability - Bridge rail on waterfill
+  Minor Features:
+    - Setting to disable placing large cargo ships on waterfill, still allows floating power poles and the small boat
+  Changes:
+    - Ordered mod settings in menu
+    - Massive code rewrite for collision mask logic (Far easier to expand and add mod compatabillity now)
+  Bugfixes:
+    - Fixed a bug not allowing waterfill to be placed on landfill with Space Exploration installed - Thanks to LCStark for finding and fixing this
+    - Fixed a typo in mod settings
+  Info:
+    - Bridges might not be 100% functional as of yet, please report issues on the mod page discussions tab (Cargo Ships compatabillity)
+---------------------------------------------------------------------------------------------------
 Version: 1.2.4
 Date: 2022.05.21
   Changes:
     - Fixed bug that broke tile transitions with only Alien Biomes loaded
+    - Changed names of certain settings
+    - Changed default recipe for waterfill
+    - Fixed missing translations for a setting in German and French
+    - Changed water layer to 7, this fixes transitions with water tiles
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.3
 Date: 2022.05.15

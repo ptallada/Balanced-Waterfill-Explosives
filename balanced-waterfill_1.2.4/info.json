@@ -1,9 +1,0 @@
-{
-    "name": "balanced-waterfill",
-    "version": "1.2.4",
-    "title": "Balanced Waterfill (Pre-release)",
-    "author": "ToastBucket",
-    "factorio_version": "1.1",
-    "dependencies": ["base >= 1.1.51", "? alien-biomes >= 0.6"],
-    "description": "Adds a more balanced counterpart to other, popular waterfill mods."
-}

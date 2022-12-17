@@ -1,0 +1,36 @@
+{
+    "Lua.diagnostics.globals": [
+        "global",
+        "__DebugAdapter",
+        "__Profiler"
+    ],
+    "factorio.versions": [
+        {
+            "name": "Factorio Mod Debugging",
+            "factorioPath": "s:\\SteamLibrary\\steamapps\\common\\Factorio\\bin\\x64\\factorio.exe",
+            "active": true
+        }
+    ],
+    "Lua.workspace.library": [
+        "s:\\SteamLibrary\\steamapps\\common\\Factorio\\data",
+        "c:/Users/m3kab/AppData/Roaming/Code/User/workspaceStorage/5906412d6fa5792c81eaba6fa7105c5c/justarandomgeek.factoriomod-debug/sumneko-3rd/factorio/library"
+    ],
+    "Lua.workspace.userThirdParty": [
+        "c:\\Users\\m3kab\\AppData\\Roaming\\Code\\User\\workspaceStorage\\5906412d6fa5792c81eaba6fa7105c5c\\justarandomgeek.factoriomod-debug\\sumneko-3rd",
+        "c:\\Users\\m3kab\\AppData\\Roaming\\Code\\User\\workspaceStorage\\62073c5b6fea31f5fcb8d2df71514a46\\justarandomgeek.factoriomod-debug\\sumneko-3rd"
+    ],
+    "Lua.runtime.builtin": {
+        "io": "disable",
+        "os": "disable",
+        "math": "disable",
+        "debug": "disable",
+        "coroutine": "disable",
+        "package": "disable"
+    },
+    "Lua.runtime.version": "Lua 5.2",
+    "Lua.runtime.special": {
+        "__object_name": "type"
+    },
+    "Lua.runtime.plugin": "c:/Users/m3kab/AppData/Roaming/Code/User/workspaceStorage/5906412d6fa5792c81eaba6fa7105c5c/justarandomgeek.factoriomod-debug/sumneko-3rd/factorio/plugin.lua",
+    "Lua.workspace.checkThirdParty": false
+}

@@ -1,15 +1,16 @@
 --waterfill.lua
-local collision_mask_util = require("collision-mask-util")
 
 --Default water tile
 local shallowater = {
   name = "shallow-waterfill",
-  collision_mask = {"water-tile", "item-layer", "object-layer", "resource-layer", "doodad-layer"},
+  collision_mask = {"water-tile"}, --Overwritten in data-final fixes
   check_collision_with_entities = true,
   draw_in_water_layer = true,
   type = "tile",
-  layer = 3,
+  layer = 7,
   can_be_part_of_blueprint = true,
+  has_special_effect_mask_transition = false,
+  transition_merges_with_tile = "water",
   effect = "water",
   effect_color = {
     10,
@@ -593,35 +594,25 @@ local recipe = {
 }
 
 --Set up recipe based off of settings
-if settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Water only" then
+if settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Water Only" then
   recipe.category = "crafting-with-fluid"
   recipe.ingredients = {{type="fluid", name="water", amount=250}}
   recipe.results = {
     {type="item", name="balanced-waterfill", amount=1}
 }
-elseif settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Normal" then
+elseif settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Uses Barrels" then
   recipe.category = "advanced-crafting"
   recipe.ingredients = {{"water-barrel",5}}
   recipe.results = {
     {type="item", name="balanced-waterfill", amount=1},
     {type="item", name="empty-barrel", amount=5}
 }
-elseif settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Expensive" then
+elseif settings.startup["balanced-waterfill-recipe-cost-setting"].value == "Consumes Barrels" then
   recipe.category = "advanced-crafting"
   recipe.ingredients = {{"water-barrel",5}}
   recipe.results = {
     {type="item", name="balanced-waterfill", amount=1},
 } end
-
---Make player and waterfill collide, while not colliding with spidertrons & whatnot
-if settings.startup["balanced-waterfill-collision-setting"].value == "Kills Players" then
-  local additional_player_layer = collision_mask_util.get_first_unused_layer()
-  shallowater.collision_mask = {"water-tile", "item-layer", "object-layer", "resource-layer", "doodad-layer", additional_player_layer}
-  data.raw["character"]["character"].collision_mask = {"player-layer", "train-layer", "consider-tile-transitions", additional_player_layer}
-end
-if settings.startup["balanced-waterfill-collision-setting"].value == "Impassible" then
-  shallowater.collision_mask = {"water-tile", "item-layer", "object-layer", "resource-layer", "doodad-layer", "player-layer"}
-end
 
 --SE compatability (disgusting hack)
 if mods["space-exploration"] then
