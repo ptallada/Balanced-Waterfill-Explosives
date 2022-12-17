@@ -8,6 +8,7 @@ This mod offers a more balanced, and less cheaty waterfill solution. Other water
 # Features
 
  - Keeps the factory, vehicles, players, and biters safe from being deleted by waterfilling. 
+ - **New!** Biters are slowed by walking on waterfill (Toggleable for ups savings)
  - Offers options to control how expensive it is to produce waterfill, allowing you to set your own difficulty
  - The ability to switch the waterfill texture between shallow water,  and muddy water
  - Fully customizable waterfill properties, allowing the player to control how cheaty the experience should be, including the option to make the waterfill replace only players, while still allowing biters to cross it and keeping the factory safe. 
@@ -17,6 +18,11 @@ This mod offers a more balanced, and less cheaty waterfill solution. Other water
 # Integration With Other Mods
 
 The mod requires some compatibility patches in order to work properly with other mods that modify terrain, or change something relating to the water found in the base game. It should function just fine with most mods however. Below is a list of mods that have been integrated in some way, as well as what was needed to get them to work, keep in mind that even if a mod isn't listed below, chances are that it still works fine with Balanced Waterfill installed. If you find an incompatibility, please don't hesitate to tell me about it in the Discussion tab of the mod page, I will try my best to get it working.
+
+
+- **NEW!** [Cargo Ships](https://mods.factorio.com/mod/cargo-ships) - Required changes to collision masking to allow placing water ways and bridges on waterfill.
+
+- **NEW!** [Beautiful Bridge Railway for Cargoships](https://mods.factorio.com/mod/beautiful_bridge_railway_Cargoships) - Needed some minor collision tweaks to get working on waterfill.
 
  - [Alien Biomes](https://mods.factorio.com/mod/alien-biomes) - Required some modification to ensure the new waterfill played well with the terrain from this mod.
 
