@@ -1,6 +1,58 @@
 --data-final-fixes.lua
 local collision_mask_util = require("collision-mask-util")
 
+
+
+local function set_waterfill_collision_mask(mask)
+    if mods["space-exploration"] then
+        data.raw.tile["shallow-fill"].collision_mask = mask
+        data.raw.tile["shallow-waterfill"].collision_mask = mask
+    else
+        data.raw.tile["shallow-waterfill"].collision_mask = mask
+    end
+end
+
+local function insert_collision_masks_by_prototype(prototype, exceptions, waterLayer)
+    for i, v in pairs(data.raw[prototype]) do 
+        local valid_entity = true
+        if exceptions then
+            for key, value in pairs(exceptions) do
+                if value == v.name then
+                    valid_entity = false
+                    break
+                end
+            end
+        end
+        if valid_entity then
+            local mask = collision_mask_util.get_mask(v)
+            table.insert(mask, waterLayer)
+            data.raw[prototype][v.name].collision_mask = mask
+            --print(v.name)
+        end
+    end
+end
+
+local function insert_collision_masks_by_layer(layer, exceptions, waterLayer)
+    for k, v in pairs(collision_mask_util.collect_prototypes_with_layer(layer)) do
+        local valid_entity = true
+        if exceptions then
+            for key, value in pairs(exceptions) do
+                if value == v.name then
+                    valid_entity = false
+                    break
+                end
+            end
+        end
+        if valid_entity then
+            local mask = collision_mask_util.get_mask(v)
+            table.insert(mask, waterLayer)
+            data.raw[v.type][v.name].collision_mask = mask
+            print(v.name)
+        end
+    end
+end
+
+
 --Collect list of character names 
 local characternames = {"character"}
 for k, char in pairs(data.raw.character) do
@@ -18,10 +70,10 @@ end
 
 
 --Water footstep particles for waterfill
---table.insert(data.raw.character[charactername].synced_footstep_particle_triggers[1].tiles, "shallow-waterfill")
 addFootstepParticles(characternames, "shallow-waterfill")
 --SE compatability
 if mods["space-exploration"] then
+    -- SE compatability (disgusting hack part 3)
     if settings.startup["balanced-waterfill-restrict-placement-se-setting"].value == false then
         data.raw.item["balanced-waterfill"].place_as_tile.result = "shallow-fill"
     end
@@ -43,14 +95,14 @@ if mods["space-exploration"] then
 
 
     --Footstep particles for the additional tile that only exists if SE is enabled
-    --table.insert(data.raw.character[charactername].synced_footstep_particle_triggers[1].tiles, "shallow-fill")
     addFootstepParticles(characternames, "shallow-fill")
 
-    --Reset tile transition layers for alien biomes compatability
+    --Reset tile transition layers for alien biomes compatability, just to make sure
     data.raw.tile["shallow-fill"].layer = 7
     
 end
 
+-- Random compatability patch
 if mods["alien-biomes"] then
     data.raw.tile["shallow-waterfill"].layer = 7
 end
@@ -103,35 +155,77 @@ if settings.startup["balanced-waterfill-biterspeed-setting"].value == true then
 end
 
 -- Cargo ships collision mask.. stuff
-if mods["cargo-ships"] then -- TODO bridge
-    local cargo_ships_compatability_layer = collision_mask_util.get_first_unused_layer()
-    data.raw["electric-pole"]["floating-electric-pole"].collision_mask = {"ground-tile", cargo_ships_compatability_layer}
+--if mods["cargo-ships"] then -- TODO bridge
+    --local cargo_ships_compatability_layer = collision_mask_util.get_first_unused_layer()
+    --data.raw["electric-pole"]["floating-electric-pole"].collision_mask = {"ground-tile", cargo_ships_compatability_layer}
 
-    data.raw["curved-rail"]["curved-water-way"].collision_mask = {"ground-tile", cargo_ships_compatability_layer}
-    data.raw["curved-rail"]["curved-water-way-placed"].collision_mask = {cargo_ships_compatability_layer}
-    data.raw["straight-rail"]["straight-water-way"].collision_mask = {"ground-tile", cargo_ships_compatability_layer}
-    data.raw["straight-rail"]["straight-water-way-placed"].collision_mask = {cargo_ships_compatability_layer}
-    data.raw["straight-rail"]["invisible_rail"].collisionw_mask = {cargo_ships_compatability_layer} -- Uhh
-    data.raw["straight-rail"]["bridge_crossing"].collision_mask = {cargo_ships_compatability_layer}
+    --data.raw["curved-rail"]["curved-water-way"].collision_mask = {"ground-tile", cargo_ships_compatability_layer}
+    --data.raw["curved-rail"]["curved-water-way-placed"].collision_mask = {cargo_ships_compatability_layer}
+    --data.raw["straight-rail"]["straight-water-way"].collision_mask = {"ground-tile", cargo_ships_compatability_layer}
+    --data.raw["straight-rail"]["straight-water-way-placed"].collision_mask = {cargo_ships_compatability_layer}
+    --data.raw["straight-rail"]["invisible_rail"].collision_mask = {cargo_ships_compatability_layer} -- Uhh
+    --data.raw["straight-rail"]["bridge_crossing"].collision_mask = {cargo_ships_compatability_layer}
 
-    data.raw["train-stop"]["port"].collision_mask = {cargo_ships_compatability_layer}
+    --data.raw["train-stop"]["port"].collision_mask = {cargo_ships_compatability_layer}
 
-    data.raw["pump"]["ship_pump"].collision_mask = {cargo_ships_compatability_layer}
+    --data.raw["pump"]["ship_pump"].collision_mask = {cargo_ships_compatability_layer}
 
-    data.raw["mining-drill"]["oil_rig"].collision_mask = {"train-layer", cargo_ships_compatability_layer, "object-layer"}
+    --data.raw["mining-drill"]["oil_rig"].collision_mask = {"train-layer", cargo_ships_compatability_layer, "object-layer"}
 
-    data.raw["straight-rail"]["straight-rail"].collision_mask = {"item-layer", "object-layer", "rail-layer", "floor-layer", "water-tile", cargo_ships_compatability_layer}
-    data.raw["curved-rail"]["curved-rail"].collision_mask = {"item-layer", "object-layer", "rail-layer", "floor-layer", "water-tile", cargo_ships_compatability_layer}
+    --data.raw["straight-rail"]["straight-rail"].collision_mask = {"item-layer", "object-layer", "rail-layer", "floor-layer", "water-tile", cargo_ships_compatability_layer}
+    --data.raw["curved-rail"]["curved-rail"].collision_mask = {"item-layer", "object-layer", "rail-layer", "floor-layer", "water-tile", cargo_ships_compatability_layer}
+--end
+
+
+-- Exceptions for collision masking
+local object_layer_exceptions_cargo_ship = {"curved-water-way", "curved-water-way-placed", "straight-water-way", "straight-water-way-placed", "invisible_rail", "bridge_crossing", "port", "bridge-west-clickable", "bridge-east-clickable", "bridge-north-clickable", "bridge-south-clickable", "bridge_base"}
+local object_layer_exceptions = {"floating-electric-pole", "ship_pump", "bbr-straight-rail-wood", "bbr-curved-rail-wood", "bbr-straight-rail-brick", "bbr-curved-rail-brick", "bbr-straight-rail-iron", "bbr-curved-rail-iron"}
+
+
+
+--TODO cut unessesary collision layers to save on space 
+
+-- Collision mask logic
+-- Should emulate {"water-tile", "item-layer", "object-layer", "resource-layer", "doodad-layer"}
+local waterfill_collision_layer_resource = collision_mask_util.get_first_unused_layer() -- Emulates resource-layer
+set_waterfill_collision_mask({waterfill_collision_layer_resource}) --Hack to make mask "in use"
+local waterfill_collision_layer_player = collision_mask_util.get_first_unused_layer() -- Emulates player-layer
+set_waterfill_collision_mask({waterfill_collision_layer_player, waterfill_collision_layer_resource}) --Hack to make mask "in use"
+local waterfill_collision_layer_object = collision_mask_util.get_first_unused_layer() -- Emulates object-layer
+
+-- clear previous waterfill collision mask
+set_waterfill_collision_mask({}) 
+
+insert_collision_masks_by_layer("resource-layer", nil, waterfill_collision_layer_resource) -- Only needed when certain mods are installed
+
+if settings.startup["balanced-waterfill-allow-cargo-ships-on-waterfill-setting"].value == true then
+    for i, val in pairs(object_layer_exceptions_cargo_ship) do
+        table.insert(object_layer_exceptions, val)
+    end
 end
 
--- ///// UNUSED ////// Factorio engine limitations, can't get placeable on waterfill, as well as land, while still colliding with objects on land, at least not well or cleanly
---if mods["beautiful_bridge_railway"] then -- Ehhhhhhh....
---    data.raw["straight-rail"]["bbr-straight-rail-wood"].collision_mask = 
---    data.raw["curved-rail"]["bbr-curved-rail-wood"].collision_mask = 
---
---    data.raw["straight-rail"]["bbr-straight-rail-brick"].collision_mask =
---    data.raw["curved-rail"]["bbr-curved-rail-brick"].collision_mask = 
---    
---    data.raw["straight-rail"]["bbr-straight-rail-iron"].collision_mask = 
---    data.raw["curved-rail"]["bbr-curved-rail-iron"].collision_mask = 
---end
+insert_collision_masks_by_layer("object-layer", object_layer_exceptions, waterfill_collision_layer_object) -- Also only needed when certain mods are installed
+
+
+
+
+--Make player and waterfill collide, while not colliding with spidertrons & whatnot depending on settings
+if settings.startup["balanced-waterfill-collision-setting"].value == "Kills Players" then
+    insert_collision_masks_by_prototype("character", nil, waterfill_collision_layer_player) -- Adds waterfill collision to all characters
+end
+if settings.startup["balanced-waterfill-collision-setting"].value == "Impassible" then
+    insert_collision_masks_by_layer("player-layer", waterfill_collision_layer_player) -- Adds waterfill collision to players, biters, vehicles, and anything else that contains with player-layer
+end
+
+set_waterfill_collision_mask({waterfill_collision_layer_resource, waterfill_collision_layer_player, waterfill_collision_layer_object, "item-layer", "doodad-layer", "water-tile"})
+
+-- Warning for likely incompatible entities, does not fire with only base mod entities for debugging purposes only
+for key, value in pairs(collision_mask_util.collect_prototypes_with_mask({"object-layer"})) do
+    print("Warning, only object layer! Likely incompatability!")
+    print(value.name)
+    print(value.type) -- swap prints for logs
+end
+
+
+
+print("Finished balanced waterfill loading!")
