@@ -7,11 +7,12 @@ This mod offers a more balanced, and less cheaty waterfill solution. Other water
 
 # Features
 
+ - By default prevents building impenetrable walls
  - Keeps the factory, vehicles, players, and biters safe from being deleted by waterfilling. 
  - **New!** Biters are slowed by walking on waterfill (Toggleable for ups savings)
  - Offers options to control how expensive it is to produce waterfill, allowing you to set your own difficulty
  - The ability to switch the waterfill texture between shallow water,  and muddy water
- - Fully customizable waterfill properties, allowing the player to control how cheaty the experience should be, including the option to make the waterfill replace only players, while still allowing biters to cross it and keeping the factory safe. 
+ - Fully customizable waterfill properties, allowing the player to control how cheaty the experience should be, including the option to make the waterfill kill players, while still allowing biters to cross it and keeping the factory safe from waterfilling. 
  - Has a technology unlock
  - Functions like normal water, allowing for offshore pumps and absorbing pollution
 
