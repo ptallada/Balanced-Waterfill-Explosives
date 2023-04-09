@@ -51,3 +51,4 @@ data.raw["optimized-particle"]["deep-water-particle"].render_layer = "ground-til
 --TODO cut unessesary collision layers dynamically based on loaded mods 
 
 --Thanks to curiosity, ashley_sky and calcwizard for the advice given while making this mod, and for answers to my sily questions.
+--Thanks as well to Earendel for the goldmine of information that is the space exploration codebase

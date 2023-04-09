@@ -221,6 +221,15 @@ end
 
 set_waterfill_collision_mask({waterfill_collision_layer_resource, waterfill_collision_layer_player, waterfill_collision_layer_object, "item-layer", "doodad-layer", "water-tile"})
 
+-- Reverse effects of collision mask changes on some selection boxes
+for k1, type in pairs({"locomotive", "cargo-wagon", "fluid-wagon", "artillery-wagon"}) do -- Space Exploration codebase to the rescue 
+    for k2, prototype in pairs(data.raw[type]) do
+        prototype.selection_priority = 51
+    end
+end
+
+
+
 -- Warning for likely incompatible entities, does not fire with only base mod entities for debugging purposes only
 for key, value in pairs(collision_mask_util.collect_prototypes_with_mask({"object-layer"})) do
     print("Warning, only object layer! Likely incompatability!")
