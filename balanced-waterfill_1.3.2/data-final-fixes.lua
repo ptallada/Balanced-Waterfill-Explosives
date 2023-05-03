@@ -68,6 +68,11 @@ local function addFootstepParticles(namelist, tile)
     end
 end
 
+if data.raw.tile["shallow-waterfill"] == nil then
+    print("Waterfill tile was deleted!")
+    error("Too many tiles loaded, limit is 255, unable to load waterfill tiles. Try removing mods with many tiles such as alien biomes. This is an engine limitation.", nil)
+    do return end
+end
 
 --Water footstep particles for waterfill
 addFootstepParticles(characternames, "shallow-waterfill")
@@ -96,6 +101,7 @@ if mods["space-exploration"] then
 
     --Footstep particles for the additional tile that only exists if SE is enabled
     addFootstepParticles(characternames, "shallow-fill")
+    
 
     --Reset tile transition layers for alien biomes compatability, just to make sure
     data.raw.tile["shallow-fill"].layer = 7
@@ -214,9 +220,7 @@ if settings.startup["balanced-waterfill-collision-setting"].value == "Kills Play
     insert_collision_masks_by_prototype("character", nil, waterfill_collision_layer_player) -- Adds waterfill collision to all characters
 end
 if settings.startup["balanced-waterfill-collision-setting"].value == "Impassible" then
-    print("BEGIN FISHING")
     insert_collision_masks_by_layer("player-layer", nil, waterfill_collision_layer_player) -- Adds waterfill collision to players, biters, vehicles, and anything else that contains with player-layer
-    print("Bro")
 end
 
 set_waterfill_collision_mask({waterfill_collision_layer_resource, waterfill_collision_layer_player, waterfill_collision_layer_object, "item-layer", "doodad-layer", "water-tile"})

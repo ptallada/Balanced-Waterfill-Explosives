@@ -26,6 +26,18 @@ for a, biter in pairs(Biters) do
     end
 end
 
+
+
+-- Make waterfill tiles critical to alien biomes to avoid loading errors later
+if mods["alien-biomes"] then
+    table.insert(alien_biomes_priority_tiles, "shallow-waterfill")
+end
+
+if mods["space-exploration"] then
+    table.insert(alien_biomes_priority_tiles, "shallow-fill")
+end
+
+
 table.insert(data.raw["explosion"]["water-splash"].flags, "placeable-off-grid")
 data.raw["optimized-particle"]["deep-water-particle"].render_layer = "ground-tile"
 
