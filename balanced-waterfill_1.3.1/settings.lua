@@ -5,7 +5,7 @@ data:extend({
         name = "balanced-waterfill-recipe-cost-setting",
         setting_type = "startup",
         default_value = "Water Only",
-        allowed_values = {"Water Only", "Uses Barrels", "Consumes Barrels"},
+        allowed_values = {"Water Only", "Uses Barrels", "Consumes Barrels", "Uses Explosives"},
         order = "b"
     },
     {
